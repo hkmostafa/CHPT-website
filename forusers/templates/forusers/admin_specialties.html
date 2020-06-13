@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{%block title %}CHPT | Specialties list {% endblock title %}
+{% block content %}
+	<br>
+   	<div class="container-fluid">
+   					<h2 class="heading text-center mb-sm-5 mb-4">Specialties </h2>
+   					<div class="col-md-12">
+		   				<nav class="navbar navbar-light d-lg-flex" style="float: left; background-color: #fff; margin-left: 270px;">
+		   				<ul class="menu mt-2 mr-auto">
+		   					<li style="" class="nav-item"> <a href="{% url 'profile' %}" class="navbar-brand"><h5>Dashboard</h5></a></li>
+		   					<li style="" class="nav-item"> <a href="{% url 'adminuser' %}" class="btn btn-light " style="color: black">Users list</a> </li> 
+		   					<li style="" class="nav-item"> <a href="{% url 'admincont' %}" class="btn btn-light">Contacts list</a> </li> 
+		   					<li style="" class="nav-item"> <a href="{% url 'adminapp'  %}" class="btn btn-light ">Appointments list</a> </li>
+		   					<li style="" class="nav-item"> <a href="{% url 'adminspec'  %}" class="btn btn-light active">Specialties list</a> </li>
+		   					<li style="" class="nav-item">  
+		   					 	<form method="GET" class="form-inline">
+						   		 <input class="form-control mr-sm-2" type="search" name="specialty_search" placeholder="Name ..." aria-label="Search">
+						   		 <button class="btn btn-outline-info my-2 my-sm-0" type="submit" style="margin-right: 10px">Search</button>
+						   		 <a href="{% url 'adminspec'  %}" class="btn btn-outline-info my-2 my-sm-0" style="margin-right: 10px">View all</a>
+						   		 <a href="{% url 'createspecialty'  %}" class="btn btn-info my-2 my-sm-0" style="margin-right: 10px">Add Specialty</a>	
+
+						 		</form>
+							</li>
+						</ul>
+		   			</nav>
+		   			<div class="container " >
+						<table class="table table-hover" id="users">
+						  <thead style="">
+						    <tr>
+						      <th scope="col-md-4" >Specialty ID</th>
+						      <th scope="col">Specialty name</th>
+						      <th colspan="2"><center>Options</center></th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						    {% for specialty in specialties %}
+						      <th scope="row">{{ specialty.id }}</th>
+						      <td>{{ specialty.specialty_name }}</td>
+						    
+						      <td style="text-align:center;"><a href="{% url 'updatespecialty' specialty.id %}" class="btn btn-outline-info">Modify</a></td>
+						      <td style="text-align:center;"><a href="{% url 'deletespecialty' specialty.id %}" class="btn btn-outline-info">Delete</a></td>
+						    </tr>
+						    {% empty %}
+						    <td colspan="6"><p><center>No specialties found</center></p></td>
+						  	{% endfor %}
+						  </tbody>
+						</table>
+					</div>		
+   				</div>	
+   		
+   	{% if specialties.has_other_pages %}
+  <div> 
+  <ul class="pagination" style="float:left;">
+    {% if specialties.has_previous %}
+      <li><a href="?page={{ specialties.previous_page_number }}" class="btn btn-light">&laquo;</a></li>
+    {% else %}
+      <li class="disabled btn btn-light" ><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in specialties.paginator.page_range %}
+      {% if specialties.number == i %}
+        <li class="active btn btn-light"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}" class="btn btn-light">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if specialties.has_next %}
+      <li><a href="?page={{ specialties.next_page_number }}" class="btn btn-light">&raquo;</a></li>
+    {% else %}
+      <li class="disabled btn btn-light"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</div>
+</div>
+<br><br>
+{% endblock %}

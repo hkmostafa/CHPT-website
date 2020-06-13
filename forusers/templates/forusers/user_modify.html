@@ -1,0 +1,28 @@
+{% extends 'base.html' %}	
+{% load crispy_forms_tags %}
+{%block title %}CHPT | Modify user {% endblock title %}
+{% block content %}
+
+<!-- contact -->
+<section class="mail pt-lg-5 pt-4">
+	<div class="container pt-lg-5">
+		<h2 class="heading text-center mb-sm-5 mb-4">{{ user.username }} update</h2>
+		<div class="row agileinfo_mail_grids">
+			<div class="col-lg-12 agileinfo_mail_grid_right">
+				<form method="post">
+					{% csrf_token %}
+					   {{ userform|crispy }} 
+                       {{ userform.errors }}
+                <br> 
+                    <input type="submit" value="Update" class="btn btn-info "> 
+                    <a href="{% url 'adminuser' %}" class="btn btn-info" style="float : right">Cancel </a>   
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</section>
+<br><br><br>
+
+
+{% endblock %}

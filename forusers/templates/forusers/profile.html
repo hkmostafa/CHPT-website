@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{%block title %}CHPT | {{user.username}} {% endblock title %}
+{% block content %}
+	<br>
+   	<div class="container">
+		<h2 class="heading text-center mb-sm-5 mb-4">Profile </h2>
+   		<div class="row">
+   			<div class="col-md-3">
+					<div class="team-member">
+						<div class="team-img">
+							<img src="{{ user.profile.image.url }}" alt="team member" class="img-fluid rounded">
+						</div>
+					</div>
+					<div class="team-title">
+						<h4>{{ user.username }}</h4>
+						<p>{{ user.email }}</p>
+					</div>
+					<br> <br>
+						<form method="POST" enctype="multipart/form-data">
+				        {% csrf_token %}
+				          	<fieldset class="form-group">
+				            <legend class="border-bottom mb-4">Profile Info</legend>
+				            {{ u_form|crispy }}
+				            {{ p_form|crispy }}
+				        </fieldset>
+				        <div class="form-group">
+				              <button class="btn btn-outline-info" type="submit">Update</button>
+				        </div>
+				      </form>
+   			</div>
+
+   			<div class="col-md-9">
+		   			<nav class="navbar navbar-light bg-light d-lg-flex">
+		   				<ul class="menu mt-2 mr-auto" style="">
+		   					<li style="padding-left:10px;padding-right:10px;"> <a href="" class="navbar-brand"><h5>Appointments management</h5></a></li>
+		   					<li style="padding-left:10px;padding-right:10px;"> <a href="{% url 'profile'  %}" class="nav-item nav-link btn btn-outline-info">Appointments list</a> </li> 
+		   					<li style="padding-left:10px;padding-right:10px;"> <a href="{% url 'createrdv'  %}" class="nav-item nav-link btn btn-outline-info">Add an appointment</a> </li>
+		   				</ul>
+		   			</nav>
+			
+					<div>
+					<table class="table table-hover" style="margin-left: 25px">
+					  <thead style="">
+					    <tr>
+					      <th scope="col">Patient name</th>
+					      <th scope="col">Specialty</th>
+					      <th scope="col">Doctor</th>
+					      <th scope="col">Date</th>
+					      <th scope="col">Time</th>
+					      <th colspan="2"><center>Options</center></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					    {%for appointment in appointments %}
+					      <th scope="row">{{ appointment.patient_name }}</th>
+					      <td>{{ appointment.specialty }}</td>
+					      <td>{{ appointment.doctor }}</td>
+					      <td>{{ appointment.app_date }}</td>
+					      <td>{{ appointment.app_time }}</td>
+					      <td><a href="{% url 'updaterdv' appointment.id %}" class="btn btn-outline-info" style="margin-left:10px;padding-right:10px;">Modify</a></td>
+					      <td><a href="{% url 'deleterdv' appointment.id %}" class="btn btn-outline-info">Delete</a></td>
+					    </tr>
+					    {% empty %}
+					    <td colspan="6"><p><center>No appointments found</center></p></td>
+					  	{% endfor %}
+					  </tbody>
+					</table>
+					</div>		
+   			</div>			
+   		</div>
+   	</div>	
+
+{% endblock %}

@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block title %}CHPT | Home {% endblock title %}
+{% block content %}
+<div class="banner" id="home">
+	<div class="layer">
+		<div class="container">
+			
+				<div class="row">
+					<div class="col-lg-6 p-0">
+						<!-- banner slider-->
+					<div class="csslider infinity" id="slider1">
+						<ul class="banner_slide_bg">
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>Quality  </span> Treatments.</h3>
+										<p class="w3ls_pvt-title my-3">We provide the best service to our patients. <br>Our patients' health is our number one priority.</p>
+										<a href="{% url 'aboutus' %}" class="btn btn-banner my-sm-3 mb-3" target="_blank">Read More</a>
+										<a href="{% url 'createrdv' %}" class="btn btn-banner1 my-sm-3 mb-3" target="_blank">Consult a doctor</a>
+									</div>
+								</div>
+							</li>
+							
+						</ul>
+						
+					</div>
+					<!-- //banner slider-->
+
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<img src="{% static 'images\my images\banner.png' %}" alt="" class="img-fluid" />
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+<hr>
+<!-- about -->
+<section class="about py-5">
+	<div class="container py-md-3">
+		<h2 class="heading text-center mb-sm-5 mb-4">About Us </h2>
+		<div class="row">
+			<div class="col-lg-8">
+				<p class="mt-sm-4 mt-3">El Mokhtar Essoussi provincial hospital was established in the late 19s , located in Moulay Rachid Avenue in Taroudant.<br>
+				The current director is Dr.Jamaâ LAADAME. <br>
+				The hospital got a functional litter capacity of 265 beds,
+				has 50 doctors, and 250 nurses. <br>
+				<a href="{% url 'aboutus' %}" style="color: black" target="_blank"><b>Read more ...</b></a>
+				 </p>
+				<div class="row mt-4">
+					
+					
+					<!-- .about-box ends here -->
+				
+						<div class="col-md-3 col-6 mt-md-0 mt-4">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-stethoscope"></span>
+							</span>
+							<h4>Administrative Affairs Department</h4>
+						</div>
+					</div>
+						<div class="col-md-3 col-6 mt-md-0 mt-4">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-stethoscope"></span>
+							</span>
+							<h4>Medecine Department</h4>
+						</div>
+					</div>
+						<div class="col-md-3 col-6 mt-md-0 mt-4">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-stethoscope"></span>
+							</span>
+							<h4>Surgery Departement</h4>
+						</div>
+					</div>
+						<div class="col-md-3 col-6 mt-md-0 mt-4">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-stethoscope"></span>
+							</span>
+							<h4>TON Department</h4>
+						</div>
+					</div>
+						<div class="col-md-3 col-6 mt-md-0 mt-4">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-stethoscope"></span>
+							</span>
+							<h4>OOS Department</h4>
+						</div>
+					</div>
+						<div class="col-md-3 col-6 mt-md-0 mt-4">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-stethoscope"></span>
+							</span>
+							<h4>Medico Technical Department</h4>
+						</div>
+					</div>
+						<div class="col-md-3 col-6 mt-md-0 mt-4">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-stethoscope"></span>
+							</span>
+							<h4>Hospital Pharmacy Service</h4>
+						</div>
+					</div>
+
+				</div>
+				<a href="{% url 'services' %}" target="_blank" style="color: black" ><b>View Services ..</b></a>
+			</div>
+			<div class="col-lg-4 col-md-8 dental">
+				<img src="{% static 'images\my images\7.png' %}" class="img-fluid" alt="" />
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //about -->
+	<hr>
+<!-- testimonials -->
+<section class="feedback" id="testimonials">
+	<div class="feedback-layer py-5">
+		<div class="container py-lg-5">
+		<h3 class="heading text-center mb-sm-5 mb-4">Testimonials</h3>
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="feedback-info">
+						<div class="feedback-top p-4">
+							<span class="fa fa-quote-right"></span> 
+							<p>El Mokhtar Essoussi Hospital is the biggest and the most improtant hospital in Taroudant province and it is the oldest one .</p>
+							<div class="clearfix"></div>
+						</div>
+						<div class="feedback-grids">
+							<div class="feedback-img">
+								<img src="{% static 'images/my images/id.png' %}" class="img-fluid" alt="">
+							</div>
+							<div class="feedback-img-info">
+								<h5>Mohamed</h5>
+								<p class="font-italic">- September 10, 2016.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+					<div class="feedback-info">
+						<div class="feedback-top p-4">
+							<span class="fa fa-quote-right"></span> 
+							<p> A wonderful hospital that brings basic health services to the residents of the ancient city of Taroudant.And the repairs made the patients feel better.</p>
+							<div class="clearfix"></div>
+						</div>
+						<div class="feedback-grids">
+							<div class="feedback-img">
+								<img src="{% static 'images/my images/id.png' %}" class="img-fluid" alt="">
+							</div>
+							<div class="feedback-img-info">
+								<h5>Amal</h5>
+								<p class="font-italic">- January 1, 2019.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
+					<div class="feedback-info">
+						<div class="feedback-top p-4">
+							<span class="fa fa-quote-right"></span> 
+							<p>As an old patient there, I have to say that the hospital services, and especially the emergencies room got better than it was before the repairs. </p>
+							<div class="clearfix"></div>
+						</div>
+						<div class="feedback-grids">
+							<div class="feedback-img">
+								<img src="{% static 'images/my images/id.png' %}" class="img-fluid" alt="">
+							</div>
+							<div class="feedback-img-info">
+								<h5>Ali</h5>
+								<p class="font-italic">- August 22, 2019.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //testimonials -->
+<hr>
+<!-- blog -->
+<section class="blog py-5">
+	<div class="container py-md-5 py-3">
+		<h3 class="heading text-center mb-sm-5 mb-4">Latest News </h3>
+		<div class="row blog-grids">
+			<div class="col-lg-7 mb-lg-5 blog-img1">
+				<img src="{% static 'images\my images\1.png' %}" alt="" class="img-fluid"/>
+				
+			</div>
+			<div class="col-lg-5 mb-lg-5 mb-4">
+				<h5>March 3, 2015.</h5>
+				<h4 class="my-3"><a href="https://www.t2s.ma" style="color: black" target="_blank">T2S</a> donated a scanner to the Provincial Hospital Center of Taroudant.</h4>
+				<p class="my-3">As part of its social and civic actions, T2S donated a General Electric brand scanner to the Provincial Hospital of Taroudant . <br>
+					The first patients from the city and the region can finally benefit from a CT scan locally without having to move to Agadir or Marrakech
+				</p>
+				
+			</div>
+			<div class="col-lg-5 mb-lg-0 mb-4">
+				<h5>April 15, 2018.</h5>
+				<h4 class="my-3">New repairs at the Provincial Hospital Center of Taroudant.</h4>
+				<p class="my-3">El Mokhtar Essoussi has finally been repaired. With better infrastructure and better looking view, residents of Taroudant province derive in abundance.
+				<br>
+				The repairs pervaded in most of the hospital's departments.Emergencies,Medecine and Administrative affairs departments in particular.
+				 </p>
+				
+			</div>
+			<div class="col-lg-7 blog-img2">
+				<img src="{% static 'images\my images\5.png' %}" alt="" class="img-fluid"/>
+				
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //blog -->
+
+{% endblock %}

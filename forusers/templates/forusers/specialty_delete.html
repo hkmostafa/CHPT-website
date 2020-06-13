@@ -1,0 +1,24 @@
+{% extends 'base.html' %}	
+{% load crispy_forms_tags %}
+{%block title %}CHPT | Delete specialty {% endblock title %}
+{% block content %}
+
+<br> <br>
+<section class="mail pt-lg-5 pt-4">
+    <div class="container pt-lg-5">
+              <center><h4>Are you sure you want to delete "{{specialty.specialty_name}}"?</h4>
+               <br>
+               <div class="border-top pt-3">
+   				 <form action="{% url 'deletespecialty' specialty.id  %}" method="POST">
+				
+				{% csrf_token %}
+				<a class="btn btn-info" href="{% url 'adminspec' %}">Cancel</a>
+
+				<input class="btn btn-danger" type="submit" value="Confirm">
+			</form>
+        	</div>
+        </center>
+    </div>
+<br> <br> <br><br><br><br><br>
+</section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{%block title %}CHPT | Add Specialty {% endblock title %}
+{% block content %}
+ <!-- Sign up form -->
+<section class="mail pt-lg-5 pt-4">
+	<div class="container pt-lg-5">
+		<h2 class="heading text-center mb-sm-5 mb-4">Add specialty</h2>
+		<div class="row agileinfo_mail_grids">
+			<div class="container col-lg-6 agileinfo_mail_grid_right">
+				<form action="" method="post">
+					{% csrf_token %}
+					{{ form|crispy }}
+					<br>
+                    <input type="submit" value="Add" class="btn btn-outline-info"> 
+                    <a href="{% url 'adminuser' %}" class="btn btn-outline-info" style="float : right">Cancel </a>       
+				</form>
+				<br> 
+			</div>
+		</div>
+	</div>
+<br> <br> <br>
+</section>
+{% endblock %}

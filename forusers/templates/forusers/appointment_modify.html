@@ -1,0 +1,32 @@
+{% extends 'base.html' %}	
+{% load crispy_forms_tags %}
+{%block title %}CHPT | Modify appointment {% endblock title %}
+{% block content %}
+
+<!-- contact -->
+<section class="mail pt-lg-5 pt-4">
+	<div class="container pt-lg-5">
+		<h2 class="heading text-center mb-sm-5 mb-4">{{ appointment.patient_name }}'s Appointment</h2>
+		<div class="row agileinfo_mail_grids">
+			<div class="col-lg-12 agileinfo_mail_grid_right">
+				<form action="" method="post">
+					{% csrf_token %}
+					   {{ rdvform|crispy }} 
+                       {{ rdvform.errors }}
+                <br> 
+                    <input type="submit" value="Update appointment" class="btn btn-outline-info">   
+                  <a href="{% url 'profile' %}" class="btn btn-outline-info" style="float : right">Cancel </a>   
+				</form>
+
+			</div>
+		</div>
+	</div>
+	
+</section>
+<br><br><br>
+<!-- //contact -->
+
+
+
+  
+{% endblock %}

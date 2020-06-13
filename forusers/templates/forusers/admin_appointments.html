@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{%block title %}CHPT | Appointments list {% endblock title %}
+{% block content %}
+	<br>
+   	<div class="container-fluid">
+   					<h2 class="heading text-center mb-sm-5 mb-4">Appointments </h2>
+   					<div class="col-md-12">
+		   			<nav class="navbar navbar-light d-lg-flex" style="float: left; background-color: #fff; margin-left: 140px; width: 85%">
+		   				<ul class="menu mt-2 mr-auto">
+		   					<li style="" class="nav-item"> <a href="{% url 'profile' %}" class="navbar-brand"><h5>Dashboard</h5></a></li>
+		   					<li style="" class="nav-item"> <a href="{% url 'adminuser' %}" class="btn btn-light" style="color: black">Users list</a> </li> 
+		   					<li style="" class="nav-item"> <a href="{% url 'admincont' %}" class="btn btn-light">Contacts list</a> </li> 
+		   					<li style="" class="nav-item"> <a href="{% url 'adminapp'  %}" class="btn btn-light active">Appointments list</a> </li>
+		   					<li style="" class="nav-item"> <a href="{% url 'adminspec'  %}" class="btn btn-light ">Specialties list</a> </li>
+		   					<li style="margin-left: 300px" class="nav-item">  
+		   					 	<form method="GET" class="form-inline">
+						   		 <input class="form-control mr-sm-2" type="search" name="user_patient_service" placeholder="Patient name or service ..." aria-label="Search">
+						   		 <button class="btn btn-outline-info my-2 my-sm-0" type="submit" style="margin-right: 10px">Search</button>
+						   		 <a href="{% url 'adminapp'  %}" class="btn btn-outline-info my-2 my-sm-0">View all</a>
+						 		</form>
+							</li>
+						</ul>
+		   			</nav>
+   					
+
+					<table class="table table-hover" id="table_id" style="">
+					  <thead style="">
+					    <tr>
+					      <th scope="col">User</th>  
+					      <th scope="col">Patient name</th>
+					      <th scope="col">Specialty</th>
+					      <th scope="col">Doctor</th>
+					      <th scope="col">Date</th>
+					      <th scope="col">Time</th>
+					      <th colspan="2"><center>Options</center></th>
+					    </tr>
+					  </thead>
+					 
+					 <tbody>
+					    <tr>
+					      {% for appointment in appointments %}
+					      <th scope="row">{{ appointment.user }}</th>
+					   	  <td>{{ appointment.patient_name }}</td>
+					      <td>{{ appointment.specialty }}</td>
+					      <td>{{ appointment.doctor }}</td>
+					      <td>{{ appointment.app_date }}</td>
+					      <td>{{ appointment.app_time }}</td>
+					      <center>
+					      <td style="text-align:center;"><a href="{% url 'deleterdv' appointment.id %}" class="btn btn-outline-info">Delete</a></td>
+					    </tr>
+					    {% empty %}
+					    <td colspan="6"><p><center>No appointments found</center></p></td>
+					  	{% endfor %}
+					  </tbody>
+					</table>
+					</div>	
+						
+   			</div>			
+   		</div>
+   		<br><br>
+   	</div>	
+
+   		
+   	{% if appointments.has_other_pages %}
+  <div> 
+  <ul class="pagination" style="float:left;">
+    {% if appointments.has_previous %}
+      <li><a href="?page={{ appointments.previous_page_number }}" class="btn btn-light">&laquo;</a></li>
+    {% else %}
+      <li class="disabled btn btn-light" ><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in appointments.paginator.page_range %}
+      {% if appointments.number == i %}
+        <li class="active btn btn-light"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}" class="btn btn-light">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if appointments.has_next %}
+      <li><a href="?page={{ appointments.next_page_number }}" class="btn btn-light">&raquo;</a></li>
+    {% else %}
+      <li class="disabled btn btn-light"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</div>
+</div>
+<br><br>
+{% endblock %}
+

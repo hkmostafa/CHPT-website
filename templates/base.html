@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>	
+<html lang="en">
+<head>
+<title>{% block title %}{% endblock title %}</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Dental Health Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+	
+	{% block script %}
+	{% endblock script %}
+	<!-- css files -->
+    <link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' /><!-- custom css -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+	<!-- DATATABLES -->
+	<!-- google fonts -->
+	<link href="{% static '//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese' %}" rel="stylesheet">
+	<link href="{% static '//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&amp;subset=latin-ext' %}" rel="stylesheet">
+	<!-- //google fonts -->
+	<script src="{% static 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' %}"></script>
+</head>
+<body>
+<!-- top header -->
+<div class="header-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<ul class="d-lg-flex header-w3_pvt">
+					<li class="mr-lg-3">
+						<span class="fa fa-envelope-open"></span>
+						<a href=" class="">chptaroudant@menara.ma</a>
+					</li>
+					<li>
+						<span class="fa fa-phone"></span>
+						<p class="d-inline">Call Us <span class="phone py-2">+212 5 28 85 24 26 </span></p>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 header-right-w3_pvt">
+				<ul class="d-lg-flex header-w3_pvt justify-content-lg-end">
+					<li class="mr-lg-3">
+						<span class=""><span class="fa fa-clock-o"></span>Mon - Fri : 8:30am to 9:30pm</span>
+					</li>
+					<li class="">
+						<span class=""><span class="fa fa-clock-o"></span>Sat & Sun : 9:00am to 6:00pm</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //top header -->
+
+<!-- //header -->
+<header class="py-3">
+	<div class="container-fluid">
+			<div id="logo">
+			<h1 style="font-size: 32px"> <a href="{% url 'home' %}"><span class="fa fa-stethoscope" aria-hidden="true"></span> Hospital Center Of Taroudant</a></h1>
+			</div>
+		<!-- nav -->
+		<nav class="d-lg-flex">
+
+<!-- 			<input type="checkbox" id="drop" />
+ -->			<ul class="menu mt-2 mr-auto">
+				<li class="active"><a href="{% url 'home' %}">Home</a></li>
+				<li class=""><a href="{% url 'aboutus' %}">About Us</a></li>
+				<li class=""><a href="{% url 'services' %}">Services</a></li>
+				<li class=""><a href="{% url 'contact' %}">Contact Us</a></li>
+				<li class=""><a href="{% url 'createrdv' %}">Book an appointment</a></li>
+				{% if user.is_authenticated %}
+					{% if user.first_name and user.last_name  %}
+				<li class=""><a href="{% url 'profile' %}">{{ user.first_name }} {{user.last_name}}</a></li>
+					{% else %}
+				<li class=""><a href="{% url 'profile' %}">{{ user.username }}</a></li>	
+					{% endif %}
+				{% else %}
+				<li class=""><a href="{% url 'register' %}">Sign Up</a></li>
+				{% endif %}
+			</ul>
+			
+			<div class="login-icon ml-2">
+				{% if user.is_authenticated %}
+				<a class="" href="{% url 'logout' %}">Logout</a>
+				{% else %}
+				<a class="" href="{% url 'login' %}">Login</a>
+				{% endif %}
+			</div>
+
+		</nav>
+		<div class="clear"></div>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
+<!-- banner -->
+<div class="innerpage-banner" id="home">
+	<div class="inner-page-layer">
+	</div>
+</div>
+<!-- //banner -->
+<!-- messages -->
+
+<!-- //messages -->
+<!--Content-->
+{% if messages %}
+	{% for message in messages %}
+	<div class="alert alert-success" role="alert">
+		<center>{{ message }}</center>	
+	 </div>
+	{% endfor %}
+{% endif %}
+
+
+{% block content %}
+{% endblock %}
+
+<!--Content-->
+
+<!-- footer -->
+<footer class="py-5">
+	<div class="container py-sm-3">
+		<div class="row footer-grids">
+			<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+				<h4 class="mb-sm-4 mb-3"><span class="fa fa-stethoscope"></span> CHP Taroudant</h4>
+				<h5>Trusted by <span>1000+ People</span> </h5>
+			</div>
+			<div class="col-lg-3 col-sm-6 mb-lg-0 mb-sm-5 mb-4">
+				<h4 class="mb-sm-4 mb-3">Address Info</h4>
+				<p><span class="fa mr-2 fa-map-marker"></span>Moulay Rachid Avenue , TAROUDANT. </p>
+				<p class="phone py-2"><span class="fa mr-2 fa-phone"></span> +212 5 28 85 24 26 </p>
+				<p><span class="fa mr-2 fa-envelope"></span>chptaroudant@menara.ma</p>
+			</div>
+		  <div class="col-lg-2 col-sm-6 mb-sm-0 mb-4">
+				<h4 class="mb-sm-4 mb-3">Quick Links</h4>
+				<ul>
+					<li><a href="#">Terms & Conditions</a></li>
+					<li class="my-2"><a href="#">Support Helpline</a></li>
+					<li><a href="#">Healthy Tips</a></li>
+					<li class="mt-2"><a href="#">Privacy Ploicy</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- //footer -->
+
+<!-- copyright -->
+<div class="copyright">
+	<div class="container py-4">
+		<div class=" text-center">
+			<p>© 2019 All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a> </p>
+		</div>
+	</div>
+</div>
+<!-- //copyright -->
+<!-- move top -->
+<div class="move-top text-right">
+	<a href="#home" class="move-top"> 
+		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+	</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}	
+{% load crispy_forms_tags %}
+{%block title %}CHPT | Create an appointment {% endblock title %}
+{% block content %}
+
+<!-- contact -->
+<section class="mail pt-lg-5 pt-4">
+	<div class="container pt-lg-5">
+		<h2 class="heading text-center mb-sm-5 mb-4">Appointment</h2>
+		<div class="row agileinfo_mail_grids">
+			<div class="col-lg-12 agileinfo_mail_grid_right">
+				<form method="post"  id="rdvForm" data-doctors-url="{% url 'ajax_load_doctors' %}" novalidate>
+					{% csrf_token %}
+					   {{ rdvform|crispy }} 
+              {{ rdvform.errors }}
+                <br> 
+                    <input type="submit" value="Book appointment" class="btn btn-info ">    
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</section>
+<br><br><br>
+<!-- //contact -->
+{% endblock %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_specialty").change(function () {
+      var url = $("#rdvForm").attr("data-doctors-url");  // get the url of the `load_cities` view
+      var specialtyId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'specialty': specialtyId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_doctor").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+{% endblock script %}
+  
+

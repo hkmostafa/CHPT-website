@@ -1,0 +1,31 @@
+  
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{%block title %}CHPT | Login {% endblock title %}
+{% block content %}
+<section class="mail pt-lg-5 pt-4">
+  <div class="container pt-lg-5">
+    <h2 class="heading text-center mb-sm-5 mb-4">Log In</h2>
+    <div class="row agileinfo_mail_grids">
+      <div class="container col-6 agileinfo_mail_grid_right">
+        <form method="POST">
+            {% csrf_token %}  
+                    <label>Username : </label>
+                    <input type="text" name="username" placeholder="Username..." class="form-control">
+                    <label>Password : </label>    
+                    <input type="password" name="password" placeholder="Password..." class="form-control" >
+                   <br>
+                     <input type="submit" value="Login" class="btn btn-outline-info ">    
+        </form>
+        <br>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{% url 'register' %}"><b>Sign Up Now</b></a>
+            </small>
+        </div>
+    </div>
+    </div>
+  </div>
+<br> <br> <br>
+</section>
+{% endblock content %}
